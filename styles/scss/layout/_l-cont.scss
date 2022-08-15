@@ -3,14 +3,14 @@
 @use "../utility/rem" as rem;
 
 .l-cont {
-  // &-- {
-  //   padding-top: 147px;
-  //   padding-bottom: 148px;
-  //   @include responsive.responsive(lg) {
-  //     padding-top: 108px;
-  //     padding-bottom: 310px;
-  //   }
-  // }
+  &-- {
+    padding-top: 147px;
+    padding-bottom: 148px;
+    @include responsive.responsive(lg) {
+      padding-top: 108px;
+      padding-bottom: 310px;
+    }
+  }
 
   //inner
   &__inner {

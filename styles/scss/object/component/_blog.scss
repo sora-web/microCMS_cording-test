@@ -5,3 +5,7 @@
 @use "../../utility/rem" as rem;
 @use "../../utility/font" as font;
 @use "../../utility/vw" as vw;
+
+.c-blog {
+  $block: &;
+}

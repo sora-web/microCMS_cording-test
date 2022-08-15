@@ -1,15 +1,28 @@
-// pages/index.js
 import Link from "next/link";
 import { client } from "../libs/client";
 
-export default function Home({ blog }) {
+export default function Home({ blog, category }) {
   return (
     <div>
-      <ul>
+      <ul className="c-blog">
         {blog.map((blog) => (
-          <li key={blog.id}>
+          <li key={blog.id} className="c-blog-item">
             <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
+              <a>
+                <div className="c-blog-item__head">
+                  <p className="c-blog-item__cat">{blog.category2}</p>
+                  <p className="c-blog-item__date">{blog.date}</p>
+                </div>
+                <div className="c-blog-item__body">
+                  <p className="c-blog-item__title">{blog.title}</p>
+                  <div
+                    className="c-blog-item__text"
+                    dangerouslySetInnerHTML={{
+                      __html: `${blog.text}`,
+                    }}
+                  />
+                </div>
+              </a>
             </Link>
           </li>
         ))}
