@@ -1,0 +1,42 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/lists" as list;
+@use "../utility/responsive" as resposive;
+@use "../utility/rem" as rem;
+
+/*
+margin&
+-----------------------------------------------------*/
+
+@each $responsive in list.$responsiveList {
+  @for $value from 0 through 100 {
+    .#{$responsive}-mt#{$value * 5} {
+      @include resposive.responsive(#{$responsive}) {
+        margin-top: 5px * $value;
+      }
+    }
+  }
+
+  @for $value from 0 through 100 {
+    .#{$responsive}-mr#{$value * 5} {
+      @include resposive.responsive(#{$responsive}) {
+        margin-right: 5px * $value;
+      }
+    }
+  }
+
+  @for $value from 0 through 100 {
+    .#{$responsive}-mb#{$value * 5} {
+      @include resposive.responsive(#{$responsive}) {
+        margin-bottom: 5px * $value;
+      }
+    }
+  }
+
+  @for $value from 0 through 100 {
+    .#{$responsive}-ml#{$value * 5} {
+      @include resposive.responsive(#{$responsive}) {
+        margin-left: 5px * $value;
+      }
+    }
+  }
+}

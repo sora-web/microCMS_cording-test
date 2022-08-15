@@ -1,4 +1,5 @@
 import { client } from "../../libs/client";
+import sytles from "../../styles/scss/style.scss";
 
 export default function BlogId({ blog }) {
   return (

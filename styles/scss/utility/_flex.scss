@@ -1,0 +1,190 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/lists" as list;
+@use "responsive" as resposive;
+
+/*
+Flex
+-----------------------------------------------------*/
+
+// @mixin flex(
+//   $flex-direction: r,
+//   $flex-wrap: w,
+//   $justify-content: fs,
+//   $align-items: fs,
+//   $align-content: fs
+// ) {
+//   display: flex;
+//   //flex-direction
+//   @if $flex-direction == r {
+//     flex-direction: row;
+//   } @else if $flex-direction == rr {
+//     flex-direction: row-reverse;
+//   } @else if $flex-direction == c {
+//     flex-direction: column;
+//   } @else if $flex-direction == cr {
+//     flex-direction: column-reverse;
+//   }
+//   //flex-wrap
+//   @if $flex-wrap == n {
+//     flex-wrap: nowrap;
+//   } @else if $flex-wrap == w {
+//     flex-wrap: wrap;
+//   } @else if $flex-wrap == r {
+//     flex-wrap: wrap-reverse;
+//   }
+//   //justify-content
+//   @if $justify-content == c {
+//     justify-content: center;
+//   } @else if $justify-content == fe {
+//     justify-content: flex-end;
+//   } @else if $justify-content == fs {
+//     justify-content: flex-start;
+//   } @else if $justify-content == sa {
+//     justify-content: space-around;
+//   } @else if $justify-content == sb {
+//     justify-content: space-between;
+//   }
+
+//   @if $align-items == b {
+//     align-items: baseline;
+//   } @else if $align-items == c {
+//     align-items: center;
+//   } @else if $align-items == fs {
+//     align-items: flex-start;
+//   } @else if $align-items == fe {
+//     align-items: flex-end;
+//   } @else if $align-items == s {
+//     align-items: stretch;
+//   }
+
+//   @if $align-content == c {
+//     align-content: center;
+//   } @else if $align-content == fe {
+//     align-content: flex-end;
+//   } @else if $align-content == fs {
+//     align-content: flex-start;
+//   } @else if $align-content == s {
+//     align-content: stretch;
+//   } @else if $align-content == sa {
+//     align-content: space-around;
+//   } @else if $align-content == sb {
+//     align-content: space-between;
+//   }
+// }
+/*
+class名
+-----------------------------------------------------*/
+
+// @each $flex in list.$responsiveList {
+//   .#{$flex}_flex {
+//     @include resposive.responsive(#{$flex}) {
+//       display: flex;
+
+//       &._fxd {
+//         &_c {
+//           flex-direction: column;
+//         }
+//         &_cr {
+//           flex-direction: column-reverse;
+//         }
+//         &_r {
+//           flex-direction: row;
+//         }
+//         &_rr {
+//           flex-direction: row-reverse;
+//         }
+//       }
+
+//       &._fxw {
+//         &_n {
+//           flex-wrap: nowrap;
+//         }
+//         &_w {
+//           flex-wrap: wrap;
+//         }
+//         &_wr {
+//           flex-wrap: wrap-reverse;
+//         }
+//       }
+
+//       &._jc {
+//         &_c {
+//           justify-content: center;
+//         }
+//         &_fe {
+//           justify-content: flex-end;
+//         }
+//         &_fs {
+//           justify-content: flex-start;
+//         }
+//         &_sa {
+//           justify-content: space-around;
+//         }
+//         &_sb {
+//           justify-content: space-between;
+//         }
+//       }
+
+//       &._ai {
+//         &_b {
+//           align-items: baseline;
+//         }
+//         &_c {
+//           align-items: center;
+//         }
+//         &_fe {
+//           align-items: flex-end;
+//         }
+//         &_fs {
+//           align-items: flex-start;
+//         }
+//         &_s {
+//           align-items: stretch;
+//         }
+//       }
+
+//       &._ac {
+//         &_c {
+//           align-content: center;
+//         }
+//         &_fe {
+//           align-content: flex-end;
+//         }
+//         &_fs {
+//           align-content: flex-start;
+//         }
+//         &_s {
+//           align-content: stretch;
+//         }
+//         &_sa {
+//           align-content: space-around;
+//         }
+//         &_sb {
+//           align-content: space-between;
+//         }
+//       }
+
+//       .#{$flex}_flex_item {
+//         &._ord {
+//           @for $i from 1 through 10 {
+//             &_#{$i} {
+//               order: $i;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+/*
+  block
+-----------------------------------------------------*/
+
+// @each $block in list.$responsiveList {
+//   .#{$block}_block {
+//     @include resposive.responsive(#{$block}) {
+//       display: block;
+//     }
+//   }
+// }

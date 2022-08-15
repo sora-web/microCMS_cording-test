@@ -1,0 +1,25 @@
+@use "../utility/responsive" as responsive;
+@use "../utility/vw" as vw;
+@use "../utility/rem" as rem;
+@use "../utility/position" as center;
+
+.l-mv {
+  $block: &;
+
+  height: calc(100vh);
+  position: relative;
+  &__inner {
+    width: 600px;
+    margin: auto;
+    #{$block}__cont {
+      @include responsive.responsive(xl) {
+      }
+    }
+  }
+
+  // .p- {
+  //   width: ;
+  //   padding-top: ;
+  //   padding-bottom: ;
+  // }
+}

@@ -1,0 +1,10 @@
+@use "../utility/responsive" as responsive;
+@use "../utility/vw" as vw;
+@use "../utility/rem" as rem;
+
+.l-footer {
+  &__inner {
+    @include responsive.responsive(xl) {
+    }
+  }
+}

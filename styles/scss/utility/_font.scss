@@ -1,0 +1,76 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/lists" as list;
+@use "../utility/responsive" as resposive;
+@use "../utility/rem" as rem;
+
+// @mixin garamond {
+//   font-family: garamond-premier-pro, serif;
+//   font-weight: 500;
+//   font-style: normal;
+// }
+
+// @mixin shippori-mincho {
+//   font-family: shippori-mincho, sans-serif;
+//   font-weight: 500;
+//   font-style: normal;
+// }
+
+// @mixin yu-gothic-pr6n {
+//   font-family: yu-gothic-pr6n, sans-serif;
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+//今回作ってみたmixin
+
+@mixin font($font, $font-size: 6px, $letter-spacing: 0, $line-height: 1) {
+  @if $font == expo {
+    font-family: expo-serif-pro, serif;
+    font-weight: 400;
+    font-style: normal;
+  } @else if $font == expo--bold {
+    font-family: expo-serif-pro, serif;
+    font-weight: 600;
+    font-style: bold;
+  } @else if $font == expo--italic {
+    font-family: expo-serif-pro, serif;
+    font-weight: 600;
+    font-style: italic;
+  } @else if $font == expo--bold-italic {
+    font-family: expo-serif-pro, serif;
+    font-weight: 700;
+    font-style: italic;
+  } @else if $font == expo--semibold-italic {
+    font-family: expo-serif-pro, serif;
+    font-weight: 600;
+    font-style: italic;
+  } @else if $font == mincho {
+    font-family: yu-mincho-pr6n, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } @else if $font == gothic {
+    font-family: yu-gothic-pr6n, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } @else if $font == gothic-bold {
+    font-family: source-han-sans-japanese, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  font-size: rem.rem($font-size);
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin font__breakpoint(
+  $responsive: md,
+  $font-size: 6px,
+  $letter-spacing: 0,
+  $line-height: 1
+) {
+  @include resposive.responsive($responsive) {
+    font-size: rem.rem($font-size);
+    letter-spacing: $letter-spacing;
+    line-height: $line-height;
+  }
+}

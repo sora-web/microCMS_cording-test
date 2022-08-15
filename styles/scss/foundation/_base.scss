@@ -1,0 +1,31 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+
+  body {
+    color: white;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        opacity: 0.7;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: top;
+    }
+  }
+}

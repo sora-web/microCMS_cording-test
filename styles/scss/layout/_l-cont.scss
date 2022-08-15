@@ -1,0 +1,58 @@
+@use "../utility/responsive" as responsive;
+@use "../utility/vw" as vw;
+@use "../utility/rem" as rem;
+
+.l-cont {
+  // &-- {
+  //   padding-top: 147px;
+  //   padding-bottom: 148px;
+  //   @include responsive.responsive(lg) {
+  //     padding-top: 108px;
+  //     padding-bottom: 310px;
+  //   }
+  // }
+
+  //inner
+  &__inner {
+    // padding-right: vw.vw(20px);
+    // padding-left: vw.vw(20px);
+
+    // @include responsive.responsive(lg) {
+    //   padding-right: 20px;
+    //   padding-left: 20px;
+    //   margin-right: auto;
+    //   margin-left: auto;
+    //   max-width: calc(1360px + 80px * 2);
+    // }
+    // &-- {
+    //   @include responsive.responsive(lg) {
+    //     max-width: calc(900px + 80px * 2);
+    //   }
+    // }
+  }
+}
+
+.l-cont {
+  // &-- {
+  //   padding-top: 147px;
+  //   padding-bottom: 148px;
+  //   @include responsive.responsive(lg) {
+  //     padding-top: 108px;
+  //     padding-bottom: 310px;
+  //   }
+  // }
+
+  //inner
+  &__inner {
+    // padding-right: vw.vw(20px);
+    // padding-left: vw.vw(20px);
+
+    // @include responsive.responsive(lg) {
+    //   padding-right: 20px;
+    //   padding-left: 20px;
+    //   margin-right: auto;
+    //   margin-left: auto;
+    //   max-width: calc(1366px + 80px * 2);
+    // }
+  }
+}

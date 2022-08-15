@@ -1,0 +1,24 @@
+@use "../variables/breakpoints" as breakpoints;
+@use "../variables/lists" as list;
+@use "../utility/responsive" as responsive;
+@use "../utility/rem" as rem;
+
+/*
+on/off
+-----------------------------------------------------*/
+
+// @each $responsive in list.$responsiveList {
+//   .#{$responsive}-on {
+//     @include responsive.responsive($responsive) {
+//       display: block;
+//     }
+//   }
+// }
+
+// @each $responsive in list.$responsiveList {
+//   .#{$responsive}-off {
+//     @include responsive.responsive($responsive) {
+//       display: none;
+//     }
+//   }
+// }
