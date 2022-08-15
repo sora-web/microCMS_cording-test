@@ -7,5 +7,104 @@
 @use "../../utility/vw" as vw;
 
 .c-blog {
-  $block: &;
+  &-item {
+    $block: &;
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include responsive.responsive(sm) {
+      margin-bottom: 40px;
+    }
+    a {
+      @include responsive.responsive(sm) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__text-area {
+      width: calc(100% * 600 / 960);
+      #{$block}__head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        @include responsive.responsive(lg) {
+          margin-bottom: 20px;
+        }
+        #{$block}__cat {
+          width: 110px;
+          background-color: #ebf2fe;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-align: center;
+          @include font.Hiragino_W7;
+          font-size: rem.rem(10px);
+          letter-spacing: 0;
+          line-height: 1;
+
+          @include responsive.responsive(lg) {
+            width: 126px;
+            font-size: rem.rem(12px);
+            letter-spacing: 0;
+            line-height: 1;
+          }
+        }
+        #{$block}__date {
+          width: 143px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-align: center;
+          @include font.Hiragino_W7;
+          font-size: rem.rem(10px);
+          letter-spacing: 0;
+          line-height: 1;
+
+          @include responsive.responsive(lg) {
+            font-size: rem.rem(12px);
+            letter-spacing: 0;
+            line-height: 1;
+          }
+        }
+      }
+      #{$block}__body {
+        margin-bottom: 20px;
+        @include responsive.responsive(lg) {
+          margin-bottom: 0px;
+        }
+        #{$block}__title {
+          margin-bottom: 10px;
+          @include font.Hiragino_W7;
+          font-size: rem.rem(16px);
+          letter-spacing: 0;
+          line-height: 1;
+
+          @include responsive.responsive(lg) {
+            font-size: rem.rem(24px);
+            letter-spacing: 0;
+            line-height: 1;
+          }
+        }
+        #{$block}__text {
+          @include font.Hiragino_W4;
+          font-size: rem.rem(13px);
+          letter-spacing: 0;
+          line-height: 1;
+          @include responsive.responsive(lg) {
+            font-size: rem.rem(16px);
+            letter-spacing: 0;
+            line-height: 1;
+          }
+        }
+      }
+    }
+    &__img-area {
+      width: calc(100% * 260 / 960);
+      margin: auto;
+      max-width: 300px;
+      #{$block}__img {
+      }
+    }
+  }
 }

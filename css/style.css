@@ -198,12 +198,12 @@ html {
   box-sizing: border-box;
 }
 html body {
-  color: white;
+  color: #000;
   position: relative;
 }
 html body a {
   text-decoration: none;
-  color: white;
+  color: #000;
   transition: 0.3s;
 }
 html body a:hover {
@@ -29319,6 +29319,111 @@ padding
 @media screen and (min-width: 1400px) {
   .xxl-pl500 {
     padding-left: 500px;
+  }
+}
+
+.l-cont {
+  background-color: white;
+  padding-bottom: 160px;
+}
+@media screen and (min-width: 992px) {
+  .l-cont {
+    padding-bottom: 200px;
+  }
+}
+.l-cont__inner {
+  padding-right: 5.3333333333vw;
+  padding-left: 5.3333333333vw;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media screen and (min-width: 992px) {
+  .l-cont__inner {
+    padding-right: 20px;
+    padding-left: 20px;
+    max-width: 1520px;
+  }
+}
+
+.c-blog-item__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__head {
+    margin-bottom: 20px;
+  }
+}
+.c-blog-item__head .c-blog-item__cat {
+  width: 110px;
+  background-color: #ebf2fe;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: "HiraginoSans-W7", sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__head .c-blog-item__cat {
+    width: 126px;
+    font-size: 0.75rem;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+}
+.c-blog-item__head .c-blog-item__date {
+  width: 143px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: "HiraginoSans-W7", sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__head .c-blog-item__date {
+    font-size: 0.75rem;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+}
+.c-blog-item__body {
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__body {
+    margin-bottom: 0px;
+  }
+}
+.c-blog-item__body .c-blog-item__title {
+  margin-bottom: 10px;
+  font-family: "HiraginoSans-W7", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__body .c-blog-item__title {
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+}
+.c-blog-item__body .c-blog-item__text {
+  font-family: "HiraginoSans-W4", sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: 1;
+}
+@media screen and (min-width: 992px) {
+  .c-blog-item__body .c-blog-item__text {
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1;
   }
 }
 
