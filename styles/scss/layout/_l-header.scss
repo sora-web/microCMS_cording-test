@@ -3,8 +3,22 @@
 @use "../utility/rem" as rem;
 
 .l-header {
+  // position: fixed;
+  // z-index: 5;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 100%;
+  @include responsive.responsive(md) {
+    padding-top: 40px;
+    padding-bottom: 100px;
+  }
+  // backdrop-filter: blur(3px);
   &__inner {
-    @include responsive.responsive(lg) {
+    width: calc(100% * 350 / 390);
+    margin: auto;
+    @include responsive.responsive(md) {
+      width: calc(100% * 1360 / 1440);
+      max-width: 1360px;
     }
   }
 }

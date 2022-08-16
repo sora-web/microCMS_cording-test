@@ -21,21 +21,21 @@
 @use "utility/align";
 
 // layout
-// @use "layout/l-header";
+@use "layout/l-header";
 // @use "layout/l-mv";
 @use "layout/l-cont";
 // @use "layout/l-footer";
 
 //conponent
 @use "object/component/blog";
-// @use "object/component/logo";
+@use "object/component/logo";
 // @use "object/component/btn";
 // @use "object/component/heading";
 // @use "object/component/text";
 
 //project
 // @use "object/project/mv";
-// @use "object/project/header";
+@use "object/project/header";
 // @use "object/project/mv";
 // @use "object/project/message";
 // @use "object/project/our-feature";
