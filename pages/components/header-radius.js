@@ -1,18 +1,16 @@
 import MyApp from "../_app";
 import Link from "next/link";
 
-const Header = () => {
+const HeaderRadius = () => {
   return (
-    <header className="l-header">
+    <header className="l-header l-header--radius">
       <div className="l-header__inner">
-        <div className="p-header">
+        <div className="p-header p-header--radius">
           <div className="p-header__inner">
             <div className="p-header__logo">
-              <Link href={`/`}>
-                <a className="c-logo">
-                  <img src="/img/logo.svg" alt="Your Name" />
-                </a>
-              </Link>
+              <p className="c-logo">
+                <img src="/img/logo.svg" alt="Your Name" />
+              </p>
             </div>
 
             <div className="p-header-pc lg-on">
@@ -20,17 +18,23 @@ const Header = () => {
                 <ul className="p-header__list">
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Design Tools</a>
+                      <a href="/" className="">
+                        Design Tools
+                      </a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Daily Updates</a>
+                      <a href="/" className="">
+                        Daily Updates
+                      </a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Tutorials</a>
+                      <a href="/" className="">
+                        Tutorials
+                      </a>
                     </Link>
                   </li>
                 </ul>
@@ -42,4 +46,4 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
+export default HeaderRadius;

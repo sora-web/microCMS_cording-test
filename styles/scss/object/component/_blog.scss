@@ -25,7 +25,11 @@
     }
 
     &__text-area {
-      width: calc(100% * 600 / 960);
+      width: 100%;
+      @include responsive.responsive(sm) {
+        width: calc(100% * 600 / 960);
+      }
+
       #{$block}__head {
         display: flex;
         align-items: center;
@@ -100,9 +104,13 @@
       }
     }
     &__img-area {
-      width: calc(100% * 260 / 960);
+      width: 100%;
       margin: auto;
-      max-width: 300px;
+      @include responsive.responsive(sm) {
+        width: calc(100% * 260 / 960);
+        max-width: 300px;
+      }
+
       #{$block}__img {
       }
     }

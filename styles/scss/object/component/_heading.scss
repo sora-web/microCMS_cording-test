@@ -4,3 +4,46 @@
 @use "../../utility/align" as align;
 @use "../../utility/rem" as rem;
 @use "../../utility/font" as font;
+
+.p-heading {
+  $block: &;
+  background-color: #232e52;
+  margin-left: auto;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  border-radius: 0 0 10px 10px;
+
+  &__inner {
+    width: calc(100% * 310 / 350);
+    margin: auto;
+
+    @include responsive.responsive(md) {
+      width: calc(100% * 960 / 1370);
+    }
+  }
+  #{$block}__title {
+    color: #fff;
+    @include font.Hiragino_W7;
+    font-size: rem.rem(24px);
+    letter-spacing: 0;
+    line-height: 1.3;
+
+    @include responsive.responsive(md) {
+      font-size: rem.rem(36px);
+      letter-spacing: 0;
+      line-height: 1.6;
+    }
+  }
+  #{$block}__cat {
+    color: #fff;
+    background-color: #232e52 !important;
+    border-radius: 6px 0 0 6px;
+    border: 1px solid #fff;
+  }
+  #{$block}__date {
+    color: #232e52;
+    background-color: #fff !important;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid #fff;
+  }
+}

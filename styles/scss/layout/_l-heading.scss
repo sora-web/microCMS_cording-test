@@ -1,0 +1,15 @@
+@use "../utility/responsive" as responsive;
+@use "../utility/vw" as vw;
+@use "../utility/rem" as rem;
+
+.l-heading {
+  //inner
+  &__inner {
+    width: calc(100% * 350 / 390);
+    margin: auto;
+    @include responsive.responsive(md) {
+      width: calc(100% * 1360 / 1440);
+      max-width: 1360px;
+    }
+  }
+}

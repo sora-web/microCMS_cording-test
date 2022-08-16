@@ -4,11 +4,17 @@
 @use "../../utility/align" as align;
 @use "../../utility/rem" as rem;
 @use "../../utility/font" as font;
+@use "../../utility/vw" as vw;
 
-.c-logo {
-  width: calc(54px);
+.p-footer {
+  text-align: center;
+  &__copyright {
+    @include font.Hiragino_W4;
+    font-size: rem.rem(12px);
+    letter-spacing: 0em;
+    line-height: 1;
 
-  @include responsive.responsive(md) {
-    width: calc(80px);
+    @include responsive.responsive(lg) {
+    }
   }
 }

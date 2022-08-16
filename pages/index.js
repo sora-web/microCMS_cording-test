@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { client } from "../libs/client";
-import Article from "./components/Article";
-import Header from "./components/header";
+import HeaderRadius from "./components/header-radius";
+import Footer from "./components/footer";
 
 // function App() {
 //   return (
@@ -27,7 +27,7 @@ const Home = ({ blog, category }) => {
   return (
     <>
       {" "}
-      <Header />
+      <HeaderRadius />
       <section className="l-cont l-cont--design-tool">
         <div className="l-cont__inner l-cont--design-tool__inner">
           <div>
@@ -67,6 +67,7 @@ const Home = ({ blog, category }) => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
