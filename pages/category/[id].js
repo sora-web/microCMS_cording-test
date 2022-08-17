@@ -1,43 +1,46 @@
+// pages/category/[id].js
 import Link from "next/link";
-import { client } from "../libs/client";
-import HeaderRadius from "./components/header-radius";
-import Footer from "./components/footer";
-import Title from "./components/title";
+import { client } from "../../libs/client";
+import Header from "../components/header";
+import Footer from "../components/footer";
+
+// 静的生成のためのパスを指定します
+export const getStaticPaths = async () => {
+  const data = await client.get({ endpoint: "categories" });
+
+  const paths = data.contents.map((content) => `/category/${content.id}`);
+  return { paths, fallback: false };
+};
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
-  // console.log(data);
-  // カテゴリーコンテンツの取得
-  const categoryData = await client.get({ endpoint: "categories" });
-
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const data = await client.get({
+    endpoint: "blog",
+    queries: { filters: `category[equals]${id}` },
+  });
+  console.log(data);
   return {
     props: {
       blog: data.contents,
-      category: categoryData.contents,
     },
   };
 };
 
-const Home = ({ blog, category }) => {
+const Category = ({ blog, category }) => {
   return (
     <>
       {" "}
-      <ul>
-        {category.map((category) => (
-          <li key={category.id}>
-            <Link href={`/category/${category.id}`}>
-              <a>{category.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <HeaderRadius />
+      {/* <Header /> */}
       <section className="l-cont l-cont--design-tool">
         <div className="l-cont__inner l-cont--design-tool__inner">
-          <div className="p-home">
+          <div className="p-category">
             <div className="c-blog-heading">
-              <Title title={"なる"} />
+              {blog.map((blog) => (
+                <h2 key={blog.id} className="c-blog-item">
+                  {blog.category && `${blog.category.name}`}
+                </h2>
+              ))}
             </div>
             <ul className="c-blog">
               {blog.map((blog) => (
@@ -79,4 +82,4 @@ const Home = ({ blog, category }) => {
     </>
   );
 };
-export default Home;
+export default Category;

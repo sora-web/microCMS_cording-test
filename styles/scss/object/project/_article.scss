@@ -17,12 +17,10 @@
     }
     p {
       margin-bottom: 40px;
-
       @include font.Hiragino_W4;
       font-size: rem.rem(15px);
       letter-spacing: 0;
       line-height: 1.6;
-
       @include responsive.responsive(lg) {
         font-size: rem.rem(18px);
         letter-spacing: 0;
@@ -30,13 +28,69 @@
       }
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
+    h1 {
+      margin-bottom: 40px;
+      @include font.Hiragino_W4;
+      font-size: rem.rem(24px);
+      letter-spacing: 0;
+      line-height: 1.6;
+      @include responsive.responsive(lg) {
+        font-size: rem.rem(30px);
+        letter-spacing: 0;
+        line-height: 1.6;
+      }
+    }
+
+    h2 {
+      margin-bottom: 40px;
+      @include font.Hiragino_W4;
+      font-size: rem.rem(22px);
+      letter-spacing: 0;
+      line-height: 1.6;
+      @include responsive.responsive(lg) {
+        font-size: rem.rem(26px);
+        letter-spacing: 0;
+        line-height: 1.6;
+      }
+    }
+
+    h3 {
+      margin-bottom: 40px;
+      @include font.Hiragino_W4;
+      font-size: rem.rem(18px);
+      letter-spacing: 0;
+      line-height: 1.6;
+      @include responsive.responsive(lg) {
+        font-size: rem.rem(22px);
+        letter-spacing: 0;
+        line-height: 1.6;
+      }
+    }
+
+    h4 {
+      margin-bottom: 40px;
+      @include font.Hiragino_W4;
+      font-size: rem.rem(18px);
+      letter-spacing: 0;
+      line-height: 1.6;
+      @include responsive.responsive(lg) {
+        font-size: rem.rem(20px);
+        letter-spacing: 0;
+        line-height: 1.6;
+      }
+    }
+
     h5 {
       margin-bottom: 40px;
-      line-height: 1.3;
+      @include font.Hiragino_W4;
+      font-size: rem.rem(16px);
+      letter-spacing: 0;
+      line-height: 1.6;
+      @include responsive.responsive(lg) {
+        font-size: rem.rem(19px);
+        letter-spacing: 0;
+        line-height: 1.6;
+      }
     }
 
     img {
@@ -51,6 +105,15 @@
         position: relative;
         margin-left: 25px;
         margin-bottom: 20px;
+        @include font.Hiragino_W4;
+        font-size: rem.rem(15px);
+        letter-spacing: 0;
+        line-height: 1.6;
+        @include responsive.responsive(lg) {
+          font-size: rem.rem(18px);
+          letter-spacing: 0;
+          line-height: 1.6;
+        }
         &::before {
           content: "";
           display: inline-block;

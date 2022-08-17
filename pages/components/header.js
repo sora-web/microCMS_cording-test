@@ -3,16 +3,14 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="l-header">
+    <header className="l-header l-header--radius">
       <div className="l-header__inner">
         <div className="p-header">
           <div className="p-header__inner">
             <div className="p-header__logo">
-              <Link href={`/`}>
-                <a className="c-logo">
-                  <img src="/img/logo.svg" alt="Your Name" />
-                </a>
-              </Link>
+              <h1 className="c-logo">
+                <img src="/img/logo.svg" alt="Your Name" />
+              </h1>
             </div>
 
             <div className="p-header-pc lg-on">

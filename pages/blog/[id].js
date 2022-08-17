@@ -1,5 +1,4 @@
 import { client } from "../../libs/client";
-import Header from "../components/header";
 import Footer from "../components/footer";
 
 // 静的生成のためのパスを指定します
@@ -26,7 +25,6 @@ export default function BlogId({ blog }) {
   return (
     <>
       {" "}
-      <Header />
       <main>
         <div className="l-heading">
           <div className="l-heading__inner">

@@ -1,0 +1,13 @@
+@use "../../utility/flex" as flex;
+@use "../../utility/responsive" as responsive;
+@use "../../utility/position" as position;
+@use "../../utility/align" as align;
+@use "../../utility/rem" as rem;
+@use "../../utility/font" as font;
+@use "../../utility/vw" as vw;
+
+.p-home {
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+}

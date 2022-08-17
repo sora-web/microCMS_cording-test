@@ -22,7 +22,7 @@
 
 // layout
 @use "layout/l-header";
-// @use "layout/l-mv";
+
 @use "layout/l-heading";
 @use "layout/l-cont";
 @use "layout/l-footer";
@@ -37,7 +37,9 @@
 //project
 @use "object/project/header";
 @use "object/project/article";
-// @use "object/project/mv";
+@use "object/project/home";
+@use "object/project/category";
+@use "object/project/footer";
 // @use "object/project/message";
 // @use "object/project/our-feature";
 // @use "object/project/abortion-surgery";
@@ -45,4 +47,3 @@
 // @use "object/project/treatment-cost";
 // @use "object/project/doctors";
 // @use "object/project/access";
-@use "object/project/footer";

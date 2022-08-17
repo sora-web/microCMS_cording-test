@@ -8,9 +8,9 @@ const HeaderRadius = () => {
         <div className="p-header p-header--radius">
           <div className="p-header__inner">
             <div className="p-header__logo">
-              <p className="c-logo">
+              <h1 className="c-logo">
                 <img src="/img/logo.svg" alt="Your Name" />
-              </p>
+              </h1>
             </div>
 
             <div className="p-header-pc lg-on">
@@ -18,23 +18,17 @@ const HeaderRadius = () => {
                 <ul className="p-header__list">
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a href="/" className="">
-                        Design Tools
-                      </a>
+                      <a className="">Design Tools</a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a href="/" className="">
-                        Daily Updates
-                      </a>
+                      <a className="">Daily Updates</a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a href="/" className="">
-                        Tutorials
-                      </a>
+                      <a className="">Tutorials</a>
                     </Link>
                   </li>
                 </ul>
