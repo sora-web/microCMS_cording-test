@@ -1,3 +1,5 @@
+// 動くバージョン
+
 import MyApp from "../_app";
 import Link from "next/link";
 
@@ -18,17 +20,17 @@ const Header = () => {
                 <ul className="p-header__list">
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Design Tools</a>
+                      <a className="">aaaaa</a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Daily Updates</a>
+                      <a className="">bbbbbb</a>
                     </Link>
                   </li>
                   <li className="p-header__item lg-mr20">
                     <Link href={`/`}>
-                      <a className="">Tutorials</a>
+                      <a className="">ccccccc</a>
                     </Link>
                   </li>
                 </ul>
@@ -41,3 +43,46 @@ const Header = () => {
   );
 };
 export default Header;
+
+// 理想形ただし、動かない
+
+// import Link from "next/link";
+// import Head from "next/head";
+// import { client } from "../../libs/client";
+
+// // データをテンプレートに受け渡す部分の処理を記述します
+// export const getStaticProps = async () => {
+//   const data = await client.get({ endpoint: "blog" });
+//   // console.log(data);
+
+//   // カテゴリーコンテンツの取得
+//   const categoryData = await client.get({ endpoint: "categories" });
+//   // console.log(categoryData);
+
+//   const thumbnailData = await client.get({ endpoint: "thumbnail" });
+//   const thumbnailData2 = thumbnailData.contents;
+//   // console.log(thumbnailData2);
+
+//   return {
+//     props: {
+//       blog: data.contents,
+//       category: categoryData.contents,
+//       thumbnail: thumbnailData2,
+//     },
+//   };
+// };
+
+// const Header = ({ blog, category }) => {
+//   return (
+//     <ul>
+//       {category.map((category) => (
+//         <li key={category.id}>
+//           <Link href={`/category/${category.id}`}>
+//             <a>{category.name}</a>
+//           </Link>
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
+// export default Header;
