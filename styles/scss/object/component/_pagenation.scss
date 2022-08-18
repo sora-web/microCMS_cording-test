@@ -1,0 +1,36 @@
+@use "../../utility/flex" as flex;
+@use "../../utility/responsive" as responsive;
+@use "../../utility/position" as position;
+@use "../../utility/align" as align;
+@use "../../utility/rem" as rem;
+@use "../../utility/font" as font;
+
+.c-pagenation-list {
+  display: flex;
+  .c-pagenation-item {
+    a {
+      display: block;
+      padding: 10px 15px;
+      margin-right: 20px;
+      border-radius: 10px;
+      background-color: #ebf2fe;
+      @include responsive.responsive(md) {
+        padding: 20px 25px;
+        margin-right: 50px;
+      }
+      @include font.Hiragino_W4;
+      font-size: rem.rem(12px);
+      letter-spacing: 0em;
+      line-height: 1;
+
+      @include responsive.responsive(md) {
+        font-size: rem.rem(24px);
+        letter-spacing: 0em;
+        line-height: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+      }
+    }
+  }
+}

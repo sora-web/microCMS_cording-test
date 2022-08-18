@@ -3,11 +3,11 @@ import Link from "next/link";
 import { client } from "../../libs/client";
 import Footer from "../../components/footer";
 import Title from "../../components/title";
+import MyHead from "../../components/head";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
-
   const paths = data.contents.map((content) => `/blog/${content.id}`);
   return { paths, fallback: false };
 };
@@ -33,12 +33,7 @@ export const getStaticProps = async (context) => {
 export default function BlogId({ blog, category, BlogData }) {
   return (
     <>
-      <Head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cording-test</title>
-      </Head>
+      <MyHead title={"Article_Page"} />
       <header className="l-header l-header--radius">
         <div className="l-header__inner">
           <div className="p-header">

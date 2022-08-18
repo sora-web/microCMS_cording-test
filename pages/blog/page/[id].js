@@ -1,16 +1,36 @@
 import Link from "next/link";
 import Head from "next/head";
-import { client } from "../libs/client";
-import Footer from "../components/footer";
-import Title from "../components/title";
-import MyHead from "../components/head";
-import { Pagination } from "../components/Pagination";
+import { client } from "../../../libs/client";
+import Footer from "../../../components/footer";
+import Title from "../../../components/title";
+import MyHead from "../../../components/head";
+import { Pagination } from "../../..//components/Pagination";
+
+const PER_PAGE = 5;
+
+// 動的なページを作成
+// 動的なページを作成
+export const getStaticPaths = async () => {
+  const repos = await client.get({ endpoint: "blog" });
+
+  const pageNumbers = [];
+
+  const range = (start, end) =>
+    [...Array(end - start + 1)].map((_, i) => start + i);
+
+  const paths = range(1, Math.ceil(repos.totalCount / PER_PAGE)).map(
+    (repo) => `/blog/page/${repo}`
+  );
+
+  return { paths, fallback: false };
+};
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async () => {
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
   const data = await client.get({
     endpoint: "blog",
-    queries: { offset: 0, limit: 5 },
+    queries: { offset: (id - 1) * 5, limit: 5 },
   });
 
   // カテゴリーコンテンツの取得
@@ -25,53 +45,9 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ blog, category, totalCount }) => {
-  console.log(totalCount);
-
+const BlogPageId = ({ blog, category, totalCount }) => {
   return (
     <>
-      <div>
-        <ul>
-          {blog.map((blog) => (
-            <li key={blog.id}>
-              <Link href={`/blog/${blog.id}`}>
-                <a>{blog.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Pagination totalCount={totalCount} />
-      </div>
-      <ul className="c-blog">
-        {blog.map((blog) => (
-          <>
-            {(() => {
-              if (blog.category.name === "WeeklyUpdates") {
-                const i = totalCount;
-                return (
-                  <div>
-                    {(() => {
-                      var items = [];
-                      for (let i = 0; i < 3; i++) {
-                        items.push(
-                          <li key={blog.id}>
-                            <Link href={`/blog/${blog.id}`}>
-                              <a>{blog.title}</a>
-                            </Link>
-                          </li>
-                        );
-                      }
-                      return <ul>{items}</ul>;
-                    })()}
-                  </div>
-                );
-              }
-            })()}
-          </>
-        ))}
-      </ul>
-
       <MyHead title={"Cording_Test"} />
       <header className="l-header l-header--radius">
         <div className="l-header__inner">
@@ -102,8 +78,8 @@ const Home = ({ blog, category, totalCount }) => {
         </div>
       </header>
 
-      <section className="l-cont">
-        <div className="l-cont__inner">
+      <section className="l-cont l-cont--design-tool">
+        <div className="l-cont__inner l-cont--design-tool__inner">
           {/* DesignTools */}
           <div className="p-home">
             <div className="c-blog-heading">
@@ -158,6 +134,7 @@ const Home = ({ blog, category, totalCount }) => {
               ))}
             </ul>
           </div>
+
           {/* WeeklyUpdates */}
           <div className="p-home">
             <div className="c-blog-heading">
@@ -275,4 +252,4 @@ const Home = ({ blog, category, totalCount }) => {
     </>
   );
 };
-export default Home;
+export default BlogPageId;

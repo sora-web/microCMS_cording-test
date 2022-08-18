@@ -4,11 +4,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../libs/client";
 import Footer from "../../components/footer";
+import MyHead from "../../components/head";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "categories" });
-
   const paths = data.contents.map((content) => `/category/${content.id}`);
 
   return { paths, fallback: false };
@@ -44,12 +44,7 @@ const Category = ({ blog, category, id }) => {
 
   return (
     <>
-      <Head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cording-test</title>
-      </Head>
+      <MyHead title={"Category_Page"} />
       <header className="l-header l-header--radius">
         <div className="l-header__inner">
           <div className="p-header">
