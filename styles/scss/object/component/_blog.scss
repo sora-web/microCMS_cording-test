@@ -119,23 +119,23 @@
           @include font.Hiragino_W7;
           font-size: rem.rem(16px);
           letter-spacing: 0;
-          line-height: 1;
+          line-height: 1.6;
 
           @include responsive.responsive(lg) {
             font-size: rem.rem(24px);
             letter-spacing: 0;
-            line-height: 1;
+            line-height: 1.6;
           }
         }
         #{$block}__text {
           @include font.Hiragino_W4;
           font-size: rem.rem(13px);
           letter-spacing: 0;
-          line-height: 1;
+          line-height: 1.8;
           @include responsive.responsive(lg) {
             font-size: rem.rem(16px);
             letter-spacing: 0;
-            line-height: 1;
+            line-height: 1.8;
           }
         }
       }

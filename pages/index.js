@@ -12,31 +12,39 @@ export const getStaticProps = async () => {
 
   // カテゴリーコンテンツの取得
   const categoryData = await client.get({ endpoint: "categories" });
-  // console.log(categoryData);
+  const categoryContents = categoryData.contents;
+  // const categoryName = categoryContents[id].name;
+  // console.log(categoryName);
 
   const thumbnailData = await client.get({ endpoint: "thumbnail" });
   const thumbnailData2 = thumbnailData.contents;
   // console.log(thumbnailData2);
+
+  const fuga = "ff";
+  const ans = "aa";
 
   return {
     props: {
       blog: data.contents,
       category: categoryData.contents,
       thumbnail: thumbnailData2,
+      hoge: fuga,
+      ans: ans,
     },
   };
 };
 
-const Home = ({ blog, category, thumbnail }) => {
+const Home = ({ blog, category, thumbnail, hoge, ans }) => {
   return (
     <>
-      {" "}
-      <Head>
+      <p>{category.name == "weeklyUpdates" && hoge}</p>
+
+      {/* <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cording-test</title>
-      </Head>
+      </Head> */}
       <ul>
         {category.map((category) => (
           <li key={category.id}>
@@ -48,7 +56,7 @@ const Home = ({ blog, category, thumbnail }) => {
       </ul>
       {/* <Header /> */}
       {/* <HeaderRadius /> */}
-      <header className="l-header l-header--radius">
+      {/* <header className="l-header l-header--radius">
         <div className="l-header__inner">
           <div className="p-header p-header--radius">
             <div className="p-header__inner">
@@ -75,18 +83,18 @@ const Home = ({ blog, category, thumbnail }) => {
             </div>
           </div>
         </div>
-      </header>
-      <section className="l-cont l-cont--design-tool">
+      </header> */}
+      {/* <section className="l-cont l-cont--design-tool">
         <div className="l-cont__inner l-cont--design-tool__inner">
           <div className="p-home">
             <div className="c-blog-heading">
               <Title title={"tutorial"} />
             </div>
-            {/* <ul className="c-blog">
+            <ul className="c-blog">
               {blog.map((blog) => (
                 <li key={blog.id}></li>
               ))}
-            </ul> */}
+            </ul>
 
             <ul className="c-blog">
               {blog.map((blog) => (
@@ -99,9 +107,6 @@ const Home = ({ blog, category, thumbnail }) => {
                             {blog.category && `${blog.category.name}`}
                           </p>
                           <p className="c-blog-item__date">{blog.date}</p>
-                          {/* <p className="c-blog-item__date">
-                            {blog.thumbnail && `${blog.thumbnail.url}`}
-                          </p> */}
                         </div>
                         <div className="c-blog-item__body">
                           <p className="c-blog-item__title">{blog.title}</p>
@@ -127,8 +132,8 @@ const Home = ({ blog, category, thumbnail }) => {
             </ul>
           </div>
         </div>
-      </section>
-      <Footer />
+      </section> */}
+      {/* <Footer /> */}
     </>
   );
 };
