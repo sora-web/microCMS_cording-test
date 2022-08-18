@@ -1,7 +1,8 @@
-import { client } from "../../libs/client";
 import Head from "next/head";
-import Footer from "../components/footer";
 import Link from "next/link";
+import { client } from "../../libs/client";
+import Footer from "../components/footer";
+import Title from "../components/title";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
@@ -13,6 +14,7 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
+  const BlogData = await client.get({ endpoint: "blog" });
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
 
@@ -21,16 +23,16 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
+      BlogData: BlogData.contents,
       blog: data,
       category: categoryData.contents,
     },
   };
 };
 
-export default function BlogId({ blog, category }) {
+export default function BlogId({ blog, category, BlogData }) {
   return (
     <>
-      {" "}
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,6 +100,62 @@ export default function BlogId({ blog, category }) {
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="l-cont-page">
+          <div className="l-cont-page__inner">
+            <div className="c-blog-heading">
+              <Title title={"最近の記事"} />
+            </div>
+            <ul className="c-blog">
+              {BlogData.map((blog) => (
+                <>
+                  {(() => {
+                    if (blog.category.name === "WeeklyUpdates") {
+                      return (
+                        <li className="c-blog-item" key={blog.id}>
+                          <Link href={`/blog/${blog.id}`}>
+                            <a>
+                              <div className="c-blog-item__text-area">
+                                <div className="c-blog-item__head">
+                                  <p className="c-blog-item__cat">
+                                    {blog.category && `${blog.category.name}`}
+                                  </p>
+                                  <p className="c-blog-item__date">
+                                    {blog.date}
+                                  </p>
+                                </div>
+                                <div className="c-blog-item__body">
+                                  <p className="c-blog-item__title">
+                                    {blog.title}
+                                  </p>
+
+                                  <div
+                                    className="c-blog-item__text"
+                                    dangerouslySetInnerHTML={{
+                                      __html: `${blog.desc}`,
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                              <div className="c-blog-item__img-area">
+                                <img
+                                  src={
+                                    blog.thumbnail && `${blog.thumbnail.url}`
+                                  }
+                                  className="c-blog-item__img"
+                                />
+                              </div>
+                            </a>
+                          </Link>
+                        </li>
+                      );
+                    }
+                  })()}
+                </>
+              ))}
+            </ul>
           </div>
         </div>
       </main>

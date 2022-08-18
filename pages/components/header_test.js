@@ -1,6 +1,6 @@
 // 動くバージョン
 
-import MyApp from "../_app";
+import MyApp from "../pages/_app";
 import Link from "next/link";
 
 const Header = () => {

@@ -8,6 +8,7 @@
 
 .c-blog {
   margin-bottom: -40px;
+  padding-bottom: 100px;
   @include responsive.responsive(md) {
     margin-bottom: -80px;
   }
@@ -28,6 +29,7 @@
     }
   }
   &-item {
+    list-style-type: none;
     $block: &;
     // max-width: 960px;
     // margin-right: auto;

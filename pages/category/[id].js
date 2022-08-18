@@ -3,36 +3,28 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../libs/client";
-import Header from "../components/header";
 import Footer from "../components/footer";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "categories" });
-  // console.log(data);
 
   const paths = data.contents.map((content) => `/category/${content.id}`);
-  // console.log(paths);
+
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const params = context.params;
-  // console.log(id);
 
   const data = await client.get({
     endpoint: "blog",
     queries: { filters: `category[equals]${id}` },
   });
-  // console.log(data);
 
   // カテゴリーコンテンツの取得
   const categoryData = await client.get({ endpoint: "categories" });
-  const categoryName = categoryData.contents.name;
-  console.log(categoryData);
-  console.log(categoryName);
 
   return {
     props: {
@@ -46,23 +38,12 @@ export const getStaticProps = async (context) => {
 const Category = ({ blog, category, id }) => {
   const router = useRouter();
   const routername = router.query.id;
-  // const routerReplace = routername.replace("/[id]", "");
-  // const routerReplace2 = routerReplace.replace("/", "");
+
   // // パラメータを受け取る
   console.log(routername);
 
   return (
     <>
-      <ul>
-        {category.map((category) => (
-          <li key={category.id}>
-            <Link href={`/category/${category.id}`}>
-              <a>{category.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
       <Head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,7 +80,6 @@ const Category = ({ blog, category, id }) => {
           </div>
         </div>
       </header>
-      {/* <Header /> */}
       <section className="l-cont l-cont--design-tool">
         <div className="l-cont__inner l-cont--design-tool__inner">
           <div className="p-category">
