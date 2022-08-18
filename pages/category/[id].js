@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { client } from "../../libs/client";
-import Footer from "../components/footer";
+import Footer from "../../components/footer";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {

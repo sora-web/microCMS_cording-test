@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { client } from "../../libs/client";
-import Footer from "../components/footer";
-import Title from "../components/title";
+import Footer from "../../components/footer";
+import Title from "../../components/title";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
