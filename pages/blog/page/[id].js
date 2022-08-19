@@ -6,7 +6,7 @@ import Title from "../../../components/title";
 import MyHead from "../../../components/head";
 import { Pagination } from "../../..//components/Pagination";
 
-const PER_PAGE = 5;
+const PER_PAGE = 9;
 
 // 動的なページを作成
 // 動的なページを作成
@@ -30,22 +30,57 @@ export const getStaticProps = async (context) => {
   const id = context.params.id;
   const data = await client.get({
     endpoint: "blog",
-    queries: { offset: (id - 1) * 5, limit: 5 },
+    queries: { offset: (id - 1) * 5, limit: 9 },
   });
 
   // カテゴリーコンテンツの取得
   const categoryData = await client.get({ endpoint: "categories" });
+  //記事数制御
+  const blogTutorials = await client.get({
+    endpoint: "blog",
+    queries: {
+      filters: `category[equals]6xy9eo0cq`,
+      offset: (id - 1) * 3,
+      limit: 3,
+    },
+  });
 
+  const blogWeeklyUpdates = await client.get({
+    endpoint: "blog",
+    queries: {
+      filters: `category[equals]b5exev039d`,
+      offset: (id - 1) * 3,
+      limit: 3,
+    },
+  });
+  const blogDesignTools = await client.get({
+    endpoint: "blog",
+    queries: {
+      filters: `category[equals]yylq_txk-iu3`,
+      offset: (id - 1) * 3,
+      limit: 3,
+    },
+  });
   return {
     props: {
       blog: data.contents,
       category: categoryData.contents,
       totalCount: data.totalCount,
+      blogTutorials: blogTutorials.contents,
+      blogWeeklyUpdates: blogWeeklyUpdates.contents,
+      blogDesignTools: blogDesignTools.contents,
     },
   };
 };
 
-const BlogPageId = ({ blog, category, totalCount }) => {
+const BlogPageId = ({
+  blog,
+  category,
+  totalCount,
+  blogTutorials,
+  blogWeeklyUpdates,
+  blogDesignTools,
+}) => {
   return (
     <>
       <MyHead title={"Cording_Test"} />
@@ -86,51 +121,37 @@ const BlogPageId = ({ blog, category, totalCount }) => {
               <Title title={"Design Tools"} />
             </div>
             <ul className="c-blog">
-              {blog.map((blog) => (
-                <>
-                  {(() => {
-                    if (blog.category.name === "DesignTools") {
-                      return (
-                        <li className="c-blog-item" key={blog.id}>
-                          <Link href={`/blog/${blog.id}`}>
-                            <a>
-                              <div className="c-blog-item__text-area">
-                                <div className="c-blog-item__head">
-                                  <p className="c-blog-item__cat">
-                                    {blog.category && `${blog.category.name}`}
-                                  </p>
-                                  <p className="c-blog-item__date">
-                                    {blog.date}
-                                  </p>
-                                </div>
-                                <div className="c-blog-item__body">
-                                  <p className="c-blog-item__title">
-                                    {blog.title}
-                                  </p>
+              {blogDesignTools.map((blog) => (
+                <li className="c-blog-item" key={blog.id}>
+                  <Link href={`/blog/${blog.id}`}>
+                    <a>
+                      <div className="c-blog-item__text-area">
+                        <div className="c-blog-item__head">
+                          <p className="c-blog-item__cat">
+                            {blog.category && `${blog.category.name}`}
+                          </p>
+                          <p className="c-blog-item__date">{blog.date}</p>
+                        </div>
+                        <div className="c-blog-item__body">
+                          <p className="c-blog-item__title">{blog.title}</p>
 
-                                  <div
-                                    className="c-blog-item__text"
-                                    dangerouslySetInnerHTML={{
-                                      __html: `${blog.desc}`,
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="c-blog-item__img-area">
-                                <img
-                                  src={
-                                    blog.thumbnail && `${blog.thumbnail.url}`
-                                  }
-                                  className="c-blog-item__img"
-                                />
-                              </div>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    }
-                  })()}
-                </>
+                          <div
+                            className="c-blog-item__text"
+                            dangerouslySetInnerHTML={{
+                              __html: `${blog.desc}`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="c-blog-item__img-area">
+                        <img
+                          src={blog.thumbnail && `${blog.thumbnail.url}`}
+                          className="c-blog-item__img"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -141,51 +162,37 @@ const BlogPageId = ({ blog, category, totalCount }) => {
               <Title title={"Weekly Updates"} />
             </div>
             <ul className="c-blog">
-              {blog.map((blog) => (
-                <>
-                  {(() => {
-                    if (blog.category.name === "WeeklyUpdates") {
-                      return (
-                        <li className="c-blog-item" key={blog.id}>
-                          <Link href={`/blog/${blog.id}`}>
-                            <a>
-                              <div className="c-blog-item__text-area">
-                                <div className="c-blog-item__head">
-                                  <p className="c-blog-item__cat">
-                                    {blog.category && `${blog.category.name}`}
-                                  </p>
-                                  <p className="c-blog-item__date">
-                                    {blog.date}
-                                  </p>
-                                </div>
-                                <div className="c-blog-item__body">
-                                  <p className="c-blog-item__title">
-                                    {blog.title}
-                                  </p>
+              {blogWeeklyUpdates.map((blog) => (
+                <li className="c-blog-item" key={blog.id}>
+                  <Link href={`/blog/${blog.id}`}>
+                    <a>
+                      <div className="c-blog-item__text-area">
+                        <div className="c-blog-item__head">
+                          <p className="c-blog-item__cat">
+                            {blog.category && `${blog.category.name}`}
+                          </p>
+                          <p className="c-blog-item__date">{blog.date}</p>
+                        </div>
+                        <div className="c-blog-item__body">
+                          <p className="c-blog-item__title">{blog.title}</p>
 
-                                  <div
-                                    className="c-blog-item__text"
-                                    dangerouslySetInnerHTML={{
-                                      __html: `${blog.desc}`,
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="c-blog-item__img-area">
-                                <img
-                                  src={
-                                    blog.thumbnail && `${blog.thumbnail.url}`
-                                  }
-                                  className="c-blog-item__img"
-                                />
-                              </div>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    }
-                  })()}
-                </>
+                          <div
+                            className="c-blog-item__text"
+                            dangerouslySetInnerHTML={{
+                              __html: `${blog.desc}`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="c-blog-item__img-area">
+                        <img
+                          src={blog.thumbnail && `${blog.thumbnail.url}`}
+                          className="c-blog-item__img"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -195,51 +202,37 @@ const BlogPageId = ({ blog, category, totalCount }) => {
               <Title title={"Tutorials"} />
             </div>
             <ul className="c-blog">
-              {blog.map((blog) => (
-                <>
-                  {(() => {
-                    if (blog.category.name === "Tutorials") {
-                      return (
-                        <li className="c-blog-item" key={blog.id}>
-                          <Link href={`/blog/${blog.id}`}>
-                            <a>
-                              <div className="c-blog-item__text-area">
-                                <div className="c-blog-item__head">
-                                  <p className="c-blog-item__cat">
-                                    {blog.category && `${blog.category.name}`}
-                                  </p>
-                                  <p className="c-blog-item__date">
-                                    {blog.date}
-                                  </p>
-                                </div>
-                                <div className="c-blog-item__body">
-                                  <p className="c-blog-item__title">
-                                    {blog.title}
-                                  </p>
+              {blogTutorials.map((blog) => (
+                <li className="c-blog-item" key={blog.id}>
+                  <Link href={`/blog/${blog.id}`}>
+                    <a>
+                      <div className="c-blog-item__text-area">
+                        <div className="c-blog-item__head">
+                          <p className="c-blog-item__cat">
+                            {blog.category && `${blog.category.name}`}
+                          </p>
+                          <p className="c-blog-item__date">{blog.date}</p>
+                        </div>
+                        <div className="c-blog-item__body">
+                          <p className="c-blog-item__title">{blog.title}</p>
 
-                                  <div
-                                    className="c-blog-item__text"
-                                    dangerouslySetInnerHTML={{
-                                      __html: `${blog.desc}`,
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="c-blog-item__img-area">
-                                <img
-                                  src={
-                                    blog.thumbnail && `${blog.thumbnail.url}`
-                                  }
-                                  className="c-blog-item__img"
-                                />
-                              </div>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    }
-                  })()}
-                </>
+                          <div
+                            className="c-blog-item__text"
+                            dangerouslySetInnerHTML={{
+                              __html: `${blog.desc}`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="c-blog-item__img-area">
+                        <img
+                          src={blog.thumbnail && `${blog.thumbnail.url}`}
+                          className="c-blog-item__img"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
