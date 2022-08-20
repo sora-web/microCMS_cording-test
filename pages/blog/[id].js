@@ -104,17 +104,13 @@ export default function BlogId({ blog, category, BlogData }) {
           </div>
         </div>
 
-        <div className="l-cont-page">
-          <div className="l-cont-page__inner">
+        <div className="l-cont-page l-cont-page--latest">
+          <div className="l-cont-page__inner ">
             <div className="c-blog-heading">
               <Title title={"最近の記事"} />
             </div>
             <ul className="c-blog c-blog--article">
               {BlogData.map((blog) => (
-                // <>
-                //   {(() => {
-                //     if (blog.category.name === "WeeklyUpdates") {
-                //       return (
                 <li className="c-blog-item" key={blog.id}>
                   <Link href={`/blog/${blog.id}`}>
                     <a>
@@ -145,10 +141,6 @@ export default function BlogId({ blog, category, BlogData }) {
                     </a>
                   </Link>
                 </li>
-                //       );
-                //     }
-                //   })()}
-                // </>
               ))}
             </ul>
           </div>

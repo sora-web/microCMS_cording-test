@@ -7,12 +7,11 @@
 @use "../../utility/vw" as vw;
 
 .c-blog {
-  margin-bottom: -40px;
-  padding-bottom: 0px;
-  @include responsive.responsive(lg) {
-    margin-bottom: -95px;
-    padding-bottom: 100px;
+  margin-bottom: 80px;
+  @include responsive.responsive(sm) {
+    margin-bottom: 115px;
   }
+
   &-heading {
     h2 {
       margin-bottom: 30px;
@@ -37,7 +36,10 @@
     // margin-left: auto;
     margin-bottom: 80px;
     @include responsive.responsive(sm) {
-      margin-bottom: 95px;
+      margin-bottom: 97px;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
     }
     position: relative;
     &::before {
