@@ -4,10 +4,9 @@
 
 .l-cont {
   padding-top: 60px;
-  padding-bottom: 60px;
+
   @include responsive.responsive(md) {
     padding-top: 100px;
-    padding-bottom: 100px;
   }
   //inner
   &__inner {
@@ -26,7 +25,12 @@
 
 .l-cont-page {
   $block: &;
-  padding-top: 100px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  @include responsive.responsive(md) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 
   &__inner {
     margin: auto;

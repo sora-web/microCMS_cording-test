@@ -6,9 +6,14 @@
 @use "../../utility/font" as font;
 
 .c-logo {
-  width: calc(54px);
+  a {
+    padding: 10px;
+    img {
+      width: calc(54px);
 
-  @include responsive.responsive(md) {
-    width: calc(80px);
+      @include responsive.responsive(md) {
+        width: calc(80px);
+      }
+    }
   }
 }

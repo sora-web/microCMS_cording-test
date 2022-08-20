@@ -88,13 +88,13 @@ const BlogPageId = ({
         <div className="l-header__inner">
           <div className="p-header p-header--radius">
             <div className="p-header__inner">
-              <Link href={`/`}>
-                <a>
-                  <h1 className="c-logo">
+              <h1 className="c-logo">
+                <Link href={`/`}>
+                  <a>
                     <img src="/img/logo.svg" alt="Your Name" />
-                  </h1>
-                </a>
-              </Link>
+                  </a>
+                </Link>
+              </h1>
               <div className="p-header-pc lg-on">
                 <div className="p-header__nav">
                   <ul className="p-header__list">
@@ -113,8 +113,8 @@ const BlogPageId = ({
         </div>
       </header>
 
-      <section className="l-cont l-cont--design-tool">
-        <div className="l-cont__inner l-cont--design-tool__inner">
+      <section className="l-cont">
+        <div className="l-cont__inner">
           {/* DesignTools */}
           <div className="p-home">
             <div className="c-blog-heading">

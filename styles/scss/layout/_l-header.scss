@@ -9,7 +9,7 @@
 
   width: 100%;
   @include responsive.responsive(md) {
-    padding-top: 40px;
+    padding-top: 30px;
   }
   // backdrop-filter: blur(3px);
   &__inner {
@@ -19,14 +19,11 @@
       width: calc(100% * 1360 / 1440);
       max-width: 1360px;
     }
-  }
-
-  &--radius {
-    padding-top: 20px;
-
-    width: 100%;
-    @include responsive.responsive(md) {
-      padding-top: 40px;
+    &--article {
+      @include responsive.responsive(md) {
+        width: calc(100% * 1370 / 1440);
+        max-width: 1370px;
+      }
     }
   }
 }

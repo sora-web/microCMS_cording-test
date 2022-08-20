@@ -14,9 +14,15 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
-  const BlogData = await client.get({ endpoint: "blog" });
+  const BlogData = await client.get({
+    endpoint: "blog",
+    queries: { offset: 0, limit: 3 },
+  });
   const id = context.params.id;
-  const data = await client.get({ endpoint: "blog", contentId: id });
+  const data = await client.get({
+    endpoint: "blog",
+    contentId: id,
+  });
 
   // カテゴリーコンテンツの取得
   const categoryData = await client.get({ endpoint: "categories" });
@@ -34,17 +40,17 @@ export default function BlogId({ blog, category, BlogData }) {
   return (
     <>
       <MyHead title={"Article_Page"} />
-      <header className="l-header l-header--radius">
-        <div className="l-header__inner">
+      <header className="l-header">
+        <div className="l-header__inner l-header__inner--article">
           <div className="p-header">
             <div className="p-header__inner">
-              <Link href={`/`}>
-                <a>
-                  <h1 className="c-logo">
+              <h1 className="c-logo">
+                <Link href={`/`}>
+                  <a>
                     <img src="/img/logo.svg" alt="Your Name" />
-                  </h1>
-                </a>
-              </Link>
+                  </a>
+                </Link>
+              </h1>
               <div className="p-header-pc lg-on">
                 <div className="p-header__nav">
                   <ul className="p-header__list">
@@ -68,7 +74,7 @@ export default function BlogId({ blog, category, BlogData }) {
             <div className="p-heading">
               <div className="p-heading__inner">
                 <div className="c-blog-item__text-area">
-                  <div className="c-blog-item__head">
+                  <div className="c-blog-item__head p-heading__head">
                     <p className="c-blog-item__cat p-heading__cat">
                       {blog.category && `${blog.category.name}`}
                     </p>
@@ -103,52 +109,46 @@ export default function BlogId({ blog, category, BlogData }) {
             <div className="c-blog-heading">
               <Title title={"最近の記事"} />
             </div>
-            <ul className="c-blog">
+            <ul className="c-blog c-blog--article">
               {BlogData.map((blog) => (
-                <>
-                  {(() => {
-                    if (blog.category.name === "WeeklyUpdates") {
-                      return (
-                        <li className="c-blog-item" key={blog.id}>
-                          <Link href={`/blog/${blog.id}`}>
-                            <a>
-                              <div className="c-blog-item__text-area">
-                                <div className="c-blog-item__head">
-                                  <p className="c-blog-item__cat">
-                                    {blog.category && `${blog.category.name}`}
-                                  </p>
-                                  <p className="c-blog-item__date">
-                                    {blog.date}
-                                  </p>
-                                </div>
-                                <div className="c-blog-item__body">
-                                  <p className="c-blog-item__title">
-                                    {blog.title}
-                                  </p>
+                // <>
+                //   {(() => {
+                //     if (blog.category.name === "WeeklyUpdates") {
+                //       return (
+                <li className="c-blog-item" key={blog.id}>
+                  <Link href={`/blog/${blog.id}`}>
+                    <a>
+                      <div className="c-blog-item__text-area">
+                        <div className="c-blog-item__head">
+                          <p className="c-blog-item__cat">
+                            {blog.category && `${blog.category.name}`}
+                          </p>
+                          <p className="c-blog-item__date">{blog.date}</p>
+                        </div>
+                        <div className="c-blog-item__body">
+                          <p className="c-blog-item__title">{blog.title}</p>
 
-                                  <div
-                                    className="c-blog-item__text"
-                                    dangerouslySetInnerHTML={{
-                                      __html: `${blog.desc}`,
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              <div className="c-blog-item__img-area">
-                                <img
-                                  src={
-                                    blog.thumbnail && `${blog.thumbnail.url}`
-                                  }
-                                  className="c-blog-item__img"
-                                />
-                              </div>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    }
-                  })()}
-                </>
+                          <div
+                            className="c-blog-item__text"
+                            dangerouslySetInnerHTML={{
+                              __html: `${blog.desc}`,
+                            }}
+                          />
+                        </div>
+                      </div>
+                      <div className="c-blog-item__img-area">
+                        <img
+                          src={blog.thumbnail && `${blog.thumbnail.url}`}
+                          className="c-blog-item__img"
+                        />
+                      </div>
+                    </a>
+                  </Link>
+                </li>
+                //       );
+                //     }
+                //   })()}
+                // </>
               ))}
             </ul>
           </div>

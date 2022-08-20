@@ -17,10 +17,9 @@ export const getStaticPaths = async () => {
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-
   const data = await client.get({
     endpoint: "blog",
-    queries: { filters: `category[equals]${id}` },
+    queries: { filters: `category[equals]${id}`, limit: 6 },
   });
 
   // カテゴリーコンテンツの取得
@@ -47,16 +46,16 @@ const Category = ({ blog, category, id }) => {
       <MyHead title={"Category_Page"} />
       <header className="l-header l-header--radius">
         <div className="l-header__inner">
-          <div className="p-header">
+          <div className="p-header p-header--radius">
             <div className="p-header__inner">
               <div className="p-header__logo">
-                <Link href={`/`}>
-                  <a>
-                    <h1 className="c-logo">
+                <h1 className="c-logo">
+                  <Link href={`/`}>
+                    <a>
                       <img src="/img/logo.svg" alt="Your Name" />
-                    </h1>
-                  </a>
-                </Link>
+                    </a>
+                  </Link>
+                </h1>
               </div>
               <div className="p-header-pc lg-on">
                 <div className="p-header__nav">

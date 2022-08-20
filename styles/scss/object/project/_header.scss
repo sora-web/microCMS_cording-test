@@ -24,7 +24,7 @@
     padding-top: 40px;
     padding-bottom: 40px;
     padding-right: 40px;
-    padding-left: 40px;
+    padding-left: 30px;
     border-radius: 10px 10px 0 0;
   }
 
@@ -42,6 +42,13 @@
         #{$block}__list {
           display: flex;
           align-items: center;
+          margin-right: -10px;
+          @include responsive.responsive(sm) {
+            margin-right: -20px;
+          }
+          @include responsive.responsive(md) {
+            margin-right: -40px;
+          }
           #{$block}__item {
             margin-right: 10px;
             @include responsive.responsive(sm) {

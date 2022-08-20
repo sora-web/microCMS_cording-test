@@ -10,7 +10,7 @@ import { Pagination } from "../components/Pagination";
 export const getStaticProps = async () => {
   const data = await client.get({
     endpoint: "blog",
-    queries: { offset: 0, limit: 9 },
+    queries: { offset: 0, limit: 100 },
   });
 
   // カテゴリーコンテンツの取得
@@ -67,13 +67,13 @@ const Home = ({
         <div className="l-header__inner">
           <div className="p-header p-header--radius">
             <div className="p-header__inner">
-              <Link href={`/`}>
-                <a>
-                  <h1 className="c-logo">
+              <h1 className="c-logo">
+                <Link href={`/`}>
+                  <a>
                     <img src="/img/logo.svg" alt="Your Name" />
-                  </h1>
-                </a>
-              </Link>
+                  </a>
+                </Link>
+              </h1>
               <div className="p-header-pc lg-on">
                 <div className="p-header__nav">
                   <ul className="p-header__list">
@@ -214,9 +214,9 @@ const Home = ({
               ))}
             </ul>
           </div>
-          <div className="p-home">
+          {/* <div className="p-home">
             <Pagination totalCount={totalCount} />
-          </div>
+          </div> */}
         </div>
       </section>
       <Footer />
