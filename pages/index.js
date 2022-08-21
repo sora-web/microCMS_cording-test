@@ -214,9 +214,6 @@ const Home = ({
               ))}
             </ul>
           </div>
-          {/* <div className="p-home">
-            <Pagination totalCount={totalCount} />
-          </div> */}
         </div>
       </section>
       <Footer />
