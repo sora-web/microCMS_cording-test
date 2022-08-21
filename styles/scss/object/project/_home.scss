@@ -10,4 +10,8 @@
   max-width: 960px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 80px;
+  @include responsive.responsive(sm) {
+    margin-bottom: 111px;
+  }
 }

@@ -195,4 +195,10 @@
       }
     }
   }
+  &__blog {
+    margin-bottom: 80px;
+    @include responsive.responsive(sm) {
+      margin-bottom: 111px;
+    }
+  }
 }

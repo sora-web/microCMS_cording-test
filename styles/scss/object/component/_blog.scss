@@ -7,11 +7,6 @@
 @use "../../utility/vw" as vw;
 
 .c-blog {
-  margin-bottom: 80px;
-  @include responsive.responsive(sm) {
-    margin-bottom: 115px;
-  }
-
   &-heading {
     h2 {
       margin-bottom: 30px;

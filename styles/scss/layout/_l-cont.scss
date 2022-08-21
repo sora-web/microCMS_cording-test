@@ -4,7 +4,9 @@
 
 .l-cont {
   padding-top: 60px;
-
+  margin-bottom: 80px;
+  @include responsive.responsive(sm) {
+  }
   @include responsive.responsive(md) {
     padding-top: 100px;
   }
