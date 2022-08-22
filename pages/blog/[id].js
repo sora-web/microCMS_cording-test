@@ -7,7 +7,10 @@ import MyHead from "../../components/head";
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
-  const data = await client.get({ endpoint: "blog" });
+  const data = await client.get({
+    endpoint: "blog",
+    queries: { offset: 0, limit: 30 },
+  });
   const paths = data.contents.map((content) => `/blog/${content.id}`);
   return { paths, fallback: false };
 };
